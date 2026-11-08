@@ -8,6 +8,7 @@ import {
     XIcon,
     WhatsappIcon,
     TelegramIcon,
+    InstagramIcon,
 } from '../components/Icons';
 import { socials } from '../data';
 
@@ -132,6 +133,16 @@ export const Contact = () => {
                                     title="X / Twitter"
                                 >
                                     <XIcon className="w-4 h-4" />
+                                </a>
+                                <a
+                                    href={socials.instagram}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram"
+                                    className="p-2 rounded-xl bg-[#0B0D13] hover:bg-violet-950/40 border border-violet-500/20 text-zinc-400 hover:text-cyan-300 hover:border-cyan-400/50 transition-all hover:shadow-[0_0_15px_rgba(139,92,246,0.3)]"
+                                    title="Instagram"
+                                >
+                                    <InstagramIcon className="w-4 h-4" />
                                 </a>
                             </div>
                         </div>

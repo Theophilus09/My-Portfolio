@@ -28,7 +28,7 @@ export const links: LinksConfig = {
         twitter: 'https://x.com/TheoAjibade44',
         whatsapp: 'https://wa.me/2348120271910',
         telegram: 'https://t.me/+2348120271910',
-        instagram: 'https://instagram.com/your_handle',
+        instagram: 'https://instagram.com/ajibade_theophilus',
         email: 'mailto:ajibadetheophilus217@gmail.com',
     },
 };
