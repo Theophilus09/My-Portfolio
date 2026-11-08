@@ -7,7 +7,8 @@ import { type ProjectCategory } from '../types';
 
 const CATEGORIES: { label: string; value: ProjectCategory }[] = [
     { label: 'All Projects', value: 'All' },
-    { label: 'Full-Stack', value: 'Full-Stack' },
+    { label: 'React', value: 'React' },
+    { label: 'Web Apps', value: 'Web Apps' },
     { label: 'Frontend', value: 'Frontend' },
     { label: 'Open Source', value: 'Open Source' },
 ];
@@ -21,16 +22,16 @@ export const Projects = () => {
             : projectsData.filter((project) => project.category === activeCategory);
 
     return (
-        <section id="projects" className="py-20 md:py-28 border-t border-zinc-800/80">
+        <section id="projects" className="py-20 md:py-28 border-t border-violet-500/15">
             <SectionHeading
                 badge="Featured Work"
-                title="Recruiter-First Project Showcase"
-                subtitle="Production web applications and responsive systems architected with TypeScript, React, and decoupled backend services."
+                title="Frontend Applications & Interfaces"
+                subtitle="Selected interactive web applications, responsive single-page products, and open-source contributions."
             />
 
-            {/* Filter Tabs with animated / sleek active pills */}
+            {/* Filter Tabs with animated violet / cyan active pills */}
             <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-                <div className="inline-flex p-1.5 rounded-2xl bg-zinc-900/80 border border-zinc-800/80 backdrop-blur-md">
+                <div className="inline-flex p-1.5 rounded-2xl bg-[#121520]/80 border border-violet-500/20 backdrop-blur-md shadow-lg">
                     {CATEGORIES.map((cat) => {
                         const count =
                             cat.value === 'All'
@@ -44,15 +45,15 @@ export const Projects = () => {
                                 key={cat.value}
                                 onClick={() => setActiveCategory(cat.value)}
                                 className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-2 cursor-pointer ${isActive
-                                    ? 'bg-emerald-500 text-zinc-950 font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)]'
-                                    : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'
+                                    ? 'bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 text-white font-bold shadow-[0_0_20px_rgba(139,92,246,0.35)]'
+                                    : 'text-zinc-400 hover:text-white hover:bg-violet-500/10'
                                     }`}
                             >
                                 <span>{cat.label}</span>
                                 <span
                                     className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono ${isActive
-                                        ? 'bg-zinc-950 text-emerald-400'
-                                        : 'bg-zinc-800 text-zinc-400'
+                                        ? 'bg-[#0B0D13] text-cyan-300'
+                                        : 'bg-[#0B0D13] text-zinc-400'
                                         }`}
                                 >
                                     {count}
@@ -71,15 +72,15 @@ export const Projects = () => {
             </div>
 
             {/* Bottom Callout */}
-            <div className="mt-14 p-6 rounded-2xl bg-zinc-900/30 border border-zinc-800/80 text-center max-w-xl mx-auto">
+            <div className="mt-14 p-6 rounded-2xl bg-[#121520]/40 border border-violet-500/20 text-center max-w-xl mx-auto backdrop-blur-sm">
                 <p className="text-xs sm:text-sm text-zinc-400">
-                    Looking for a specific architecture or custom full-stack demo?
+                    Need a custom frontend interface, design system, or React component suite?
                 </p>
                 <a
                     href="#contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-emerald-400 hover:text-emerald-300 mt-2 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-cyan-400 hover:text-cyan-300 mt-2 transition-colors"
                 >
-                    Let's discuss your requirements ↗
+                    Let's discuss your project ↗
                 </a>
             </div>
         </section>

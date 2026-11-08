@@ -83,7 +83,7 @@ export const ContactForm = () => {
                 {/* Name Input */}
                 <div>
                     <label htmlFor="name" className="block text-xs font-mono text-zinc-400 mb-1.5 font-medium">
-                        Your Name <span className="text-emerald-400">*</span>
+                        Your Name <span className="text-cyan-400">*</span>
                     </label>
                     <input
                         id="name"
@@ -92,14 +92,14 @@ export const ContactForm = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Alex Johnson"
-                        className="w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
+                        className="w-full px-4 py-3 rounded-xl bg-[#0B0D13]/80 border border-violet-500/20 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
                     />
                 </div>
 
                 {/* Email Input */}
                 <div>
                     <label htmlFor="email" className="block text-xs font-mono text-zinc-400 mb-1.5 font-medium">
-                        Your Email <span className="text-emerald-400">*</span>
+                        Your Email <span className="text-cyan-400">*</span>
                     </label>
                     <input
                         id="email"
@@ -108,7 +108,7 @@ export const ContactForm = () => {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. alex@company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
+                        className="w-full px-4 py-3 rounded-xl bg-[#0B0D13]/80 border border-violet-500/20 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
                     />
                 </div>
             </div>
@@ -116,7 +116,7 @@ export const ContactForm = () => {
             {/* Subject Input */}
             <div>
                 <label htmlFor="subject" className="block text-xs font-mono text-zinc-400 mb-1.5 font-medium">
-                    Subject <span className="text-emerald-400">*</span>
+                    Subject <span className="text-cyan-400">*</span>
                 </label>
                 <input
                     id="subject"
@@ -124,15 +124,15 @@ export const ContactForm = () => {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="e.g. Frontend Developer Role / Full-Stack Project Collaboration"
-                    className="w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
+                    placeholder="e.g. Frontend Developer Role / Web App Collaboration"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0B0D13]/80 border border-violet-500/20 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
                 />
             </div>
 
             {/* Message Textarea */}
             <div>
                 <label htmlFor="message" className="block text-xs font-mono text-zinc-400 mb-1.5 font-medium">
-                    Message <span className="text-emerald-400">*</span>
+                    Message <span className="text-cyan-400">*</span>
                 </label>
                 <textarea
                     id="message"
@@ -140,18 +140,18 @@ export const ContactForm = () => {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell me about your team, tech stack, or the project you'd like to collaborate on..."
-                    className="w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white placeholder-zinc-500 text-sm transition-all resize-none shadow-inner"
+                    placeholder="Tell me about your team, tech stack, or frontend goals..."
+                    className="w-full px-4 py-3 rounded-xl bg-[#0B0D13]/80 border border-violet-500/20 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none text-white placeholder-zinc-500 text-sm transition-all resize-none shadow-inner"
                 />
             </div>
 
             {/* Feedback Messages */}
             {status === 'success' && (
-                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3 text-emerald-400 text-sm animate-in fade-in duration-300">
-                    <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
+                <div className="p-4 rounded-xl bg-cyan-500/10 border border-cyan-400/30 flex items-start gap-3 text-cyan-300 text-sm animate-in fade-in duration-300">
+                    <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400" />
                     <div>
                         <strong className="block font-semibold">Message delivered successfully!</strong>
-                        <span className="text-emerald-300/80 text-xs mt-0.5">
+                        <span className="text-cyan-200/80 text-xs mt-0.5">
                             Thank you for reaching out. Your transmission was received and routed to my inbox via Resend. I will respond promptly.
                         </span>
                     </div>
@@ -172,16 +172,16 @@ export const ContactForm = () => {
             <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-zinc-950 font-bold text-sm transition-all shadow-[0_0_25px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.45)] active:scale-95 cursor-pointer disabled:cursor-not-allowed"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 disabled:opacity-50 text-white font-bold text-sm transition-all shadow-[0_0_25px_rgba(139,92,246,0.35)] hover:shadow-[0_0_35px_rgba(34,211,238,0.4)] active:scale-95 cursor-pointer disabled:cursor-not-allowed"
             >
                 {status === 'loading' ? (
                     <>
-                        <Loader2 className="w-4 h-4 animate-spin text-zinc-950" />
-                        <span>Sending message to server...</span>
+                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <span>Dispatching message to server...</span>
                     </>
                 ) : (
                     <>
-                        <Sparkles className="w-4 h-4" />
+                        <Sparkles className="w-4 h-4 text-cyan-200" />
                         <span>Send Message</span>
                         <Send className="w-4 h-4" />
                     </>

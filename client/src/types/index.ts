@@ -1,6 +1,6 @@
 // client/src/types/index.ts
 
-export type ProjectCategory = 'All' | 'Full-Stack' | 'Frontend' | 'Open Source' | 'React' | 'JavaScript';
+export type ProjectCategory = 'All' | 'React' | 'Web Apps' | 'Frontend' | 'Open Source';
 
 export interface Project {
     id: string;

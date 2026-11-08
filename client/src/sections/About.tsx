@@ -1,104 +1,121 @@
 // client/src/sections/About.tsx
+import { useState } from 'react';
 import { SectionHeading } from '../components/SectionHeading';
 import {
     Code2,
     Layers,
     Cpu,
-    GitPullRequest,
-    Globe2,
-    ShieldCheck,
-    Boxes,
+    Sparkles,
+    Palette,
     ArrowUpRight,
-    TerminalSquare
+    TerminalSquare,
+    Zap,
+    Flame
 } from 'lucide-react';
 
 export const About = () => {
+    const [fpsMode, setFpsMode] = useState<'smooth' | 'ultra'>('smooth');
+
     const coreFocusAreas = [
         {
-            title: 'Frontend Engineering',
-            desc: 'Building responsive, deterministic Single Page Applications with React, TypeScript, and modern state architectures.',
+            title: 'Component Architecture',
+            desc: 'Designing declarative, reusable component hierarchies with React, Next.js, and TypeScript for long-term scalability.',
             icon: Code2,
         },
         {
-            title: 'Responsive Web Applications',
-            desc: 'Engineering fluid layout systems with Tailwind CSS, ensuring 100% responsiveness and zero layout shift across viewports.',
+            title: 'Responsive & Fluid UI',
+            desc: 'Crafting responsive layouts with Tailwind CSS, ensuring 100% fluid viewports, zero layout shift, and intuitive mobile ergonomics.',
             icon: Layers,
         },
         {
-            title: 'Scalable UI Systems',
-            desc: 'Crafting reusable component libraries, strict accessibility standards (a11y), and maintainable design tokens.',
-            icon: Boxes,
+            title: 'Design Systems & Tokens',
+            desc: 'Translating visual design languages into systematic UI tokens, strict accessibility standards (WCAG/a11y), and tactile micro-interactions.',
+            icon: Palette,
         },
     ];
 
-    const frontendSkills = ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'JavaScript (ES6+)', 'Vite'];
-    const backendSkills = ['Node.js', 'Express.js', 'REST APIs', 'MongoDB Atlas', 'Supabase', 'Resend API'];
-    const toolingSkills = ['Git & GitHub', 'Vercel CI/CD', 'Render', 'ESLint', 'Postman', 'VS Code'];
+    const frontendSkills = ['React.js', 'Next.js', 'TypeScript', 'JavaScript (ES6+)', 'Tailwind CSS', 'Vite'];
+    const stylingSkills = ['Responsive Layouts', 'CSS3 / PostCSS', 'Micro-Interactions', 'Component Libraries', 'Accessibility (a11y)'];
+    const toolingSkills = ['Git & GitHub', 'Vercel CI/CD', 'REST API Integration', 'VS Code & DevTools', 'ESLint / Prettier'];
 
     const keySignals = [
         {
-            metric: 'Live Production',
-            label: 'Web applications actively deployed on Vercel & Render',
-            icon: Globe2,
+            metric: 'Modern Frontend',
+            label: 'Production React & Next.js SPAs deployed with fluid responsiveness',
+            icon: Sparkles,
         },
         {
             metric: '100% Type-Safe',
-            label: 'End-to-end TypeScript interfaces and rigorous validation',
-            icon: ShieldCheck,
+            label: 'Strict TypeScript interfaces and defensive frontend validation',
+            icon: Zap,
         },
         {
-            metric: 'Open Source',
-            label: 'Active code contributor to community platforms & tools',
-            icon: GitPullRequest,
+            metric: 'Design Systems',
+            label: 'Consistent design tokens, custom hooks, and reusable primitives',
+            icon: Palette,
         },
         {
             metric: 'First-Principles',
-            label: 'Engineering discipline translating complex logic into clean code',
+            label: 'Engineering discipline translating complex logic into elegant interfaces',
             icon: Cpu,
         },
     ];
 
     return (
-        <section id="about" className="py-20 md:py-28 border-t border-zinc-800/80 relative">
+        <section id="about" className="py-20 md:py-28 border-t border-violet-500/15 relative">
+            {/* Ambient decorative glow */}
+            <div className="absolute top-1/2 left-0 w-96 h-96 bg-violet-600/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+
             <SectionHeading
-                badge="About & Signal Hub"
-                title="Engineering Mindset & Technical Signals"
-                subtitle="A recruiter-grade snapshot of my technical strengths, core disciplines, and architectural values."
+                badge="About & Engineering Signals"
+                title="Frontend Mindset & UI Craftsmanship"
+                subtitle="A deep look into my approach to component architecture, interactive interfaces, and modern web engineering."
             />
 
             {/* Bento Grid Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
                 {/* Bento Card 1: Narrative & Engineering Craft (Col 7) */}
-                <div className="lg:col-span-7 rounded-2xl bg-zinc-900/40 backdrop-blur-md border border-zinc-800/80 p-6 sm:p-8 hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group">
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+                <div className="lg:col-span-7 rounded-2xl bg-[#121520]/70 backdrop-blur-md border border-violet-500/20 p-6 sm:p-8 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group shadow-lg">
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
                     
-                    <div className="flex items-center gap-2.5 mb-4 text-emerald-400 font-mono text-xs font-semibold uppercase tracking-wider">
-                        <TerminalSquare className="w-4 h-4" />
-                        <span>Background & Philosophy</span>
+                    <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2.5 text-cyan-400 font-mono text-xs font-semibold uppercase tracking-wider">
+                            <TerminalSquare className="w-4 h-4" />
+                            <span>Engineering Philosophy</span>
+                        </div>
+                        {/* Whimsical interactive FPS pill */}
+                        <button
+                            onClick={() => setFpsMode(fpsMode === 'smooth' ? 'ultra' : 'smooth')}
+                            className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-violet-500/10 border border-violet-500/30 text-violet-300 hover:text-cyan-300 cursor-pointer transition-colors"
+                            title="Toggle refresh mode"
+                        >
+                            <Flame className="w-3 h-3 text-amber-400" />
+                            <span>{fpsMode === 'smooth' ? '60 FPS • Smooth' : '120 FPS • Ultra'}</span>
+                        </button>
                     </div>
 
                     <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-4">
-                        Bridging rigorous engineering discipline with modern web architecture.
+                        Building responsive, accessible web interfaces where performance meets delightful design.
                     </h3>
 
                     <div className="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
                         <p>
-                            I am a <strong className="text-white font-medium">Frontend & Full-Stack Developer</strong> driven by software craftsmanship. With an academic background in engineering, I treat web development as a system of interconnected, high-leverage parts: from deterministic client states to resilient microservices.
+                            I am a <strong className="text-white font-medium">Frontend Developer & UI Engineer</strong> passionate about crafting interactive, high-performance web experiences. With an engineering background, I approach user interfaces through structured decomposition: breaking complex requirements into deterministic, reusable React components.
                         </p>
                         <p>
-                            My approach centers on <span className="text-emerald-400 font-medium">clean code separation</span>, scalable component hierarchies, and sub-second rendering performance. Rather than assembling disparate snippets, I decompose complex UI challenges into modular, type-safe, and self-documenting codebases.
+                            My development workflow focuses on <span className="text-cyan-300 font-medium">clean component architecture</span>, intuitive micro-interactions, and zero layout shift. From handling client-side state transitions to polishing typography across viewports, I ensure every detail feels intentional.
                         </p>
                         <p className="text-zinc-400">
-                            Whether architecting high-conversion single page applications, integrating secure transactional email pipelines, or optimizing build bundles in Vite, I prioritize developer velocity and delightful user experience.
+                            I thrive in the modern React and TypeScript ecosystem—leveraging Next.js for server-rendered speed and Tailwind CSS for rapid, maintainable design systems.
                         </p>
                     </div>
 
-                    <div className="mt-6 pt-5 border-t border-zinc-800/80 flex flex-wrap items-center gap-3">
-                        <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Practices:</span>
-                        {['Clean Architecture', 'Accessible Semantic UI', 'State Normalization', 'Zero Layout Shifts'].map((tag) => (
+                    <div className="mt-6 pt-5 border-t border-violet-500/15 flex flex-wrap items-center gap-2.5">
+                        <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Standards:</span>
+                        {['Pixel-Perfect Layouts', 'Strict Accessibility (a11y)', 'State Normalization', 'Zero Layout Shift'].map((tag) => (
                             <span
                                 key={tag}
-                                className="px-2.5 py-1 text-xs font-mono rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300"
+                                className="px-2.5 py-1 text-xs font-mono rounded-lg bg-[#0B0D13] border border-violet-500/20 text-zinc-300"
                             >
                                 {tag}
                             </span>
@@ -106,17 +123,17 @@ export const About = () => {
                     </div>
                 </div>
 
-                {/* Bento Card 2: Key Signals & Engineering Metrics (Col 5) */}
-                <div className="lg:col-span-5 rounded-2xl bg-zinc-900/40 backdrop-blur-md border border-zinc-800/80 p-6 sm:p-8 hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+                {/* Bento Card 2: Key Signals & Metrics (Col 5) */}
+                <div className="lg:col-span-5 rounded-2xl bg-[#121520]/70 backdrop-blur-md border border-violet-500/20 p-6 sm:p-8 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-lg">
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
                     
                     <div>
                         <div className="flex items-center justify-between mb-4">
-                            <span className="text-emerald-400 font-mono text-xs font-semibold uppercase tracking-wider">
+                            <span className="text-violet-300 font-mono text-xs font-semibold uppercase tracking-wider">
                                 Recruiter Signals
                             </span>
-                            <span className="text-[11px] font-mono text-zinc-500 bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">
-                                Verified Highlights
+                            <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-400/30">
+                                Verified Frontend
                             </span>
                         </div>
 
@@ -126,9 +143,9 @@ export const About = () => {
                                 return (
                                     <div
                                         key={idx}
-                                        className="p-3.5 rounded-xl bg-zinc-950/60 border border-zinc-800/80 hover:border-emerald-500/30 transition-colors flex items-start gap-3.5"
+                                        className="p-3.5 rounded-xl bg-[#0B0D13]/70 border border-violet-500/15 hover:border-cyan-400/30 transition-all flex items-start gap-3.5 group/item"
                                     >
-                                        <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 shrink-0 mt-0.5">
+                                        <div className="p-2 rounded-lg bg-violet-500/10 text-cyan-300 group-hover/item:text-cyan-200 shrink-0 mt-0.5">
                                             <Icon className="w-4 h-4" />
                                         </div>
                                         <div>
@@ -145,21 +162,24 @@ export const About = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-400">
-                        <span>Status: Interview Ready</span>
-                        <a href="#contact" className="text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1 font-semibold">
-                            <span>Request Interview</span>
+                    <div className="mt-6 pt-4 border-t border-violet-500/15 flex items-center justify-between text-xs font-mono text-zinc-400">
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                            Ready for Interviews
+                        </span>
+                        <a href="#contact" className="text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 font-semibold transition-colors">
+                            <span>Reach Out</span>
                             <ArrowUpRight className="w-3.5 h-3.5" />
                         </a>
                     </div>
                 </div>
 
                 {/* Bento Card 3: Core Focus Areas (Col 5) */}
-                <div className="lg:col-span-5 rounded-2xl bg-zinc-900/40 backdrop-blur-md border border-zinc-800/80 p-6 sm:p-8 hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden">
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+                <div className="lg:col-span-5 rounded-2xl bg-[#121520]/70 backdrop-blur-md border border-violet-500/20 p-6 sm:p-8 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden shadow-lg">
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
                     
-                    <span className="text-emerald-400 font-mono text-xs font-semibold uppercase tracking-wider block mb-4">
-                        Core Engineering Focus
+                    <span className="text-cyan-400 font-mono text-xs font-semibold uppercase tracking-wider block mb-4">
+                        Core UI Engineering Focus
                     </span>
 
                     <div className="space-y-4">
@@ -168,10 +188,10 @@ export const About = () => {
                             return (
                                 <div
                                     key={idx}
-                                    className="p-4 rounded-xl bg-zinc-950/50 border border-zinc-800/80 hover:border-zinc-700 transition-colors"
+                                    className="p-4 rounded-xl bg-[#0B0D13]/60 border border-violet-500/15 hover:border-violet-500/30 transition-colors"
                                 >
                                     <div className="flex items-center gap-2.5 mb-1.5">
-                                        <div className="p-1.5 rounded-md bg-emerald-500/10 text-emerald-400">
+                                        <div className="p-1.5 rounded-lg bg-violet-500/10 text-cyan-300">
                                             <Icon className="w-4 h-4" />
                                         </div>
                                         <h4 className="text-sm font-bold text-white tracking-tight">
@@ -188,29 +208,29 @@ export const About = () => {
                 </div>
 
                 {/* Bento Card 4: Tech Stack Matrix (Col 7) */}
-                <div className="lg:col-span-7 rounded-2xl bg-zinc-900/40 backdrop-blur-md border border-zinc-800/80 p-6 sm:p-8 hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden">
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+                <div className="lg:col-span-7 rounded-2xl bg-[#121520]/70 backdrop-blur-md border border-violet-500/20 p-6 sm:p-8 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden shadow-lg">
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
                     
                     <div className="flex items-center justify-between mb-5">
-                        <span className="text-emerald-400 font-mono text-xs font-semibold uppercase tracking-wider">
-                            Tech Stack Matrix
+                        <span className="text-violet-300 font-mono text-xs font-semibold uppercase tracking-wider">
+                            Frontend Stack Matrix
                         </span>
                         <span className="text-xs font-mono text-zinc-500">
-                            Production Toolkit
+                            Daily Production Arsenal
                         </span>
                     </div>
 
                     <div className="space-y-4">
-                        {/* Frontend Matrix */}
+                        {/* Core Frontend */}
                         <div>
                             <span className="text-xs font-mono text-zinc-400 mb-2 block font-medium">
-                                Frontend Ecosystem
+                                Core Frameworks & TypeScript
                             </span>
                             <div className="flex flex-wrap gap-2">
                                 {frontendSkills.map((tech) => (
                                     <span
                                         key={tech}
-                                        className="px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-200 hover:border-emerald-500/40 hover:text-emerald-400 transition-all"
+                                        className="px-3 py-1.5 text-xs font-mono font-medium rounded-xl bg-[#0B0D13] border border-violet-500/20 text-zinc-200 hover:border-cyan-400/40 hover:text-cyan-300 transition-all hover:shadow-[0_0_12px_rgba(34,211,238,0.2)]"
                                     >
                                         {tech}
                                     </span>
@@ -218,16 +238,16 @@ export const About = () => {
                             </div>
                         </div>
 
-                        {/* Backend Matrix */}
+                        {/* Styling & Motion */}
                         <div>
                             <span className="text-xs font-mono text-zinc-400 mb-2 block font-medium">
-                                Backend & Cloud APIs
+                                Styling, Motion & Design Systems
                             </span>
                             <div className="flex flex-wrap gap-2">
-                                {backendSkills.map((tech) => (
+                                {stylingSkills.map((tech) => (
                                     <span
                                         key={tech}
-                                        className="px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-200 hover:border-emerald-500/40 hover:text-emerald-400 transition-all"
+                                        className="px-3 py-1.5 text-xs font-mono font-medium rounded-xl bg-[#0B0D13] border border-violet-500/20 text-zinc-200 hover:border-cyan-400/40 hover:text-cyan-300 transition-all hover:shadow-[0_0_12px_rgba(34,211,238,0.2)]"
                                     >
                                         {tech}
                                     </span>
@@ -235,16 +255,16 @@ export const About = () => {
                             </div>
                         </div>
 
-                        {/* Tools & DevOps */}
+                        {/* Tooling & APIs */}
                         <div>
                             <span className="text-xs font-mono text-zinc-400 mb-2 block font-medium">
-                                Tooling & Workflows
+                                Tooling & API Client Integration
                             </span>
                             <div className="flex flex-wrap gap-2">
                                 {toolingSkills.map((tech) => (
                                     <span
                                         key={tech}
-                                        className="px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-200 hover:border-emerald-500/40 hover:text-emerald-400 transition-all"
+                                        className="px-3 py-1.5 text-xs font-mono font-medium rounded-xl bg-[#0B0D13] border border-violet-500/20 text-zinc-200 hover:border-cyan-400/40 hover:text-cyan-300 transition-all hover:shadow-[0_0_12px_rgba(34,211,238,0.2)]"
                                     >
                                         {tech}
                                     </span>

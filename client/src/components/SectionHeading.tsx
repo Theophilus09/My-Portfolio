@@ -17,8 +17,8 @@ export const SectionHeading = ({
             className={`mb-12 md:mb-16 ${align === 'center' ? 'text-center mx-auto' : 'text-left'
                 } max-w-3xl`}
         >
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3.5 text-xs font-mono font-medium tracking-wider uppercase text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3.5 text-xs font-mono font-medium tracking-wider uppercase text-cyan-400 bg-cyan-500/10 border border-cyan-400/30 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.15)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                 {badge}
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">

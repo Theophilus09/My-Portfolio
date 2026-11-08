@@ -3,34 +3,36 @@ import { type SkillCategory } from '../types';
 
 export const skillsData: SkillCategory[] = [
     {
-        title: 'Frontend Development',
+        title: 'Frontend Architecture',
         skills: [
-            { name: 'HTML5' },
-            { name: 'CSS3' },
-            { name: 'JavaScript (ES6+)' },
-            { name: 'TypeScript' },
             { name: 'React.js' },
+            { name: 'Next.js' },
+            { name: 'TypeScript' },
+            { name: 'JavaScript (ES6+)' },
             { name: 'Tailwind CSS' },
+            { name: 'HTML5 & Modern CSS3' },
         ],
     },
     {
-        title: 'Backend & APIs',
+        title: 'Interactive UI & Design Systems',
         skills: [
-            { name: 'Node.js' },
-            { name: 'Express.js' },
-            { name: 'REST APIs' },
-            { name: 'MongoDB Atlas' },
-            { name: 'Supabase' },
+            { name: 'Responsive Layout Systems' },
+            { name: 'Component Reusability' },
+            { name: 'State Management' },
+            { name: 'Micro-Interactions' },
+            { name: 'Web Accessibility (a11y)' },
+            { name: 'CSS Animations & Transitions' },
         ],
     },
     {
-        title: 'Tools & Workflows',
+        title: 'Tooling & Deployment',
         skills: [
-            { name: 'Git & GitHub' },
-            { name: 'Vite' },
-            { name: 'VS Code' },
-            { name: 'Vercel & Render' },
-            { name: 'ClickUp' },
+            { name: 'Vite & Modern Bundlers' },
+            { name: 'Git & GitHub Workflows' },
+            { name: 'Vercel CI/CD' },
+            { name: 'REST API Client Integration' },
+            { name: 'VS Code & DevTools' },
+            { name: 'ESLint & Code Standards' },
         ],
     },
 ];
