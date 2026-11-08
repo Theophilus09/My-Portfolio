@@ -15,16 +15,17 @@ export const SectionHeading = ({
     return (
         <div
             className={`mb-12 md:mb-16 ${align === 'center' ? 'text-center mx-auto' : 'text-left'
-                } max-w-2xl`}
+                } max-w-3xl`}
         >
-            <span className="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wider uppercase font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3.5 text-xs font-mono font-medium tracking-wider uppercase text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 {badge}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3">
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
                 {title}
             </h2>
             {subtitle && (
-                <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
+                <p className="text-zinc-400 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto">
                     {subtitle}
                 </p>
             )}

@@ -1,6 +1,7 @@
 // client/src/components/ProjectCard.tsx
 import type { Project } from '../types';
-import { ExternalLink, Folder } from 'lucide-react';
+import { ExternalLink, FolderGit2, CheckCircle2 } from 'lucide-react';
+import { GithubIcon } from './Icons';
 
 interface ProjectCardProps {
     project: Project;
@@ -8,74 +9,113 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
     return (
-        <div className="flex flex-col justify-between p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-emerald-500/40 transition-all duration-300 group">
+        <div className="flex flex-col justify-between rounded-2xl bg-zinc-900/40 backdrop-blur-md border border-zinc-800/80 hover:border-emerald-500/50 transition-all duration-300 group hover:shadow-[0_0_30px_rgba(16,185,129,0.12)] overflow-hidden">
             <div>
-                {/* Top Header: Category Tag & Action Links */}
-                <div className="flex items-center justify-between mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                        <Folder className="w-3.5 h-3.5" />
-                        {project.category}
-                    </span>
+                {/* Aspect Ratio Preview Frame (Inspired by Linear / Vercel preview cards) */}
+                <div className="relative aspect-[16/10] bg-zinc-950/80 border-b border-zinc-800/80 overflow-hidden flex flex-col justify-between p-4 group-hover:bg-zinc-950/60 transition-colors">
+                    {/* Ambient subtle gradient behind preview */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 via-transparent to-teal-500/5 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <div className="flex items-center gap-3">
-                        {project.githubUrl && (
-                            <a
-                                href={project.githubUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label={`GitHub repo for ${project.title}`}
-                                className="text-zinc-400 hover:text-white transition-colors p-1"
-                            >
-                                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                                </svg>
-                            </a>
-                        )}
+                    {/* Window Controls / Header Bar */}
+                    <div className="relative z-10 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-2.5 h-2.5 rounded-full bg-zinc-800 border border-zinc-700/60" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-zinc-800 border border-zinc-700/60" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-zinc-800 border border-zinc-700/60" />
+                        </div>
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-zinc-900/90 text-zinc-400 border border-zinc-800">
+                            {project.category}
+                        </span>
+                    </div>
 
-                        {project.liveUrl && (
-                            <a
-                                href={project.liveUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label={`Live demo for ${project.title}`}
-                                className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors p-1"
-                            >
-                                <span>Live Demo</span>
-                                <ExternalLink className="w-3.5 h-3.5" />
-                            </a>
-                        )}
+                    {/* Center Wireframe / Visual Representation */}
+                    <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-2">
+                        <div className="p-3 rounded-2xl bg-zinc-900/80 border border-zinc-800 text-emerald-400 mb-2 shadow-inner group-hover:scale-110 group-hover:border-emerald-500/40 transition-all duration-300">
+                            <FolderGit2 className="w-6 h-6" />
+                        </div>
+                        <span className="text-xs font-mono text-zinc-400 font-semibold tracking-wide">
+                            {project.title}
+                        </span>
+                    </div>
+
+                    {/* Footer bar of the preview */}
+                    <div className="relative z-10 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+                        <span>Production Build</span>
+                        <span className="text-emerald-400 flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            Active
+                        </span>
                     </div>
                 </div>
 
-                {/* Project Title */}
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
-                    {project.title}
-                </h3>
+                {/* Content Body */}
+                <div className="p-6">
+                    <h3 className="text-xl font-bold text-white tracking-tight mb-2.5 group-hover:text-emerald-400 transition-colors">
+                        {project.title}
+                    </h3>
 
-                {/* Description */}
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                    {project.description}
-                </p>
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+                        {project.description}
+                    </p>
 
-                {/* Problem Solved Badge / Note */}
-                {project.problemSolved && (
-                    <div className="mb-4 p-3 rounded-lg bg-zinc-950/60 border border-zinc-800/60 text-xs text-zinc-300">
-                        <strong className="text-emerald-400 font-medium">Key Focus: </strong>
-                        {project.problemSolved}
-                    </div>
-                )}
+                    {/* Problem Solved & Architectural Value */}
+                    {project.problemSolved && (
+                        <div className="mb-4 p-3.5 rounded-xl bg-zinc-950/60 border border-zinc-800/80 text-xs text-zinc-300 leading-relaxed">
+                            <div className="flex items-center gap-1.5 text-emerald-400 font-mono font-semibold mb-1">
+                                <CheckCircle2 className="w-3.5 h-3.5" />
+                                <span>Problem Solved:</span>
+                            </div>
+                            <p className="text-zinc-400">{project.problemSolved}</p>
+                        </div>
+                    )}
+                </div>
             </div>
 
-            {/* Tech Stack Pills */}
-            <div className="flex flex-wrap items-center gap-1.5 pt-4 border-t border-zinc-800/60">
-                {project.tags.map((tag) => (
-                    <span
-                        key={tag}
-                        className="px-2.5 py-1 text-xs font-mono rounded-md bg-zinc-800/60 text-zinc-300 border border-zinc-700/40"
-                    >
-                        {tag}
-                    </span>
-                ))}
+            {/* Bottom Section: Tech Badges & Action Links */}
+            <div className="px-6 pb-6 pt-0 space-y-4">
+                {/* Tech Badges */}
+                <div className="flex flex-wrap items-center gap-1.5">
+                    {project.tags.map((tag) => (
+                        <span
+                            key={tag}
+                            className="px-2.5 py-1 text-[11px] font-mono rounded-md bg-zinc-950 border border-zinc-800/80 text-zinc-300"
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+
+                {/* Distinct Action Buttons: Live Preview ↗ and Source Code ↗ */}
+                <div className="pt-4 border-t border-zinc-800/80 flex items-center gap-3">
+                    {project.liveUrl ? (
+                        <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)] active:scale-95"
+                        >
+                            <span>Live Preview</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                    ) : (
+                        <span className="flex-1 inline-flex items-center justify-center px-3.5 py-2 rounded-lg bg-zinc-900/60 border border-zinc-800/60 text-zinc-500 text-xs font-mono">
+                            Demo on Request
+                        </span>
+                    )}
+
+                    {project.githubUrl && (
+                        <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 hover:text-white text-xs font-medium transition-all active:scale-95"
+                            aria-label={`Source code for ${project.title}`}
+                        >
+                            <GithubIcon className="w-3.5 h-3.5" />
+                            <span>Source Code</span>
+                        </a>
+                    )}
+                </div>
             </div>
         </div>
     );

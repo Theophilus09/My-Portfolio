@@ -1,6 +1,6 @@
 // client/src/components/ContactForm.tsx
 import { useState, type FormEvent } from 'react';
-import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, Loader2, Sparkles } from 'lucide-react';
 
 interface FormState {
     name: string;
@@ -35,7 +35,6 @@ export const ContactForm = () => {
         setErrorMessage('');
 
         try {
-            // In Phase 4, our Express backend will receive this at http://localhost:5000/api/contact
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/contact';
 
             const response = await fetch(apiUrl, {
@@ -83,8 +82,8 @@ export const ContactForm = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name Input */}
                 <div>
-                    <label htmlFor="name" className="block text-xs font-mono text-zinc-400 mb-1.5">
-                        Your Name *
+                    <label htmlFor="name" className="block text-xs font-mono text-zinc-400 mb-1.5 font-medium">
+                        Your Name <span className="text-emerald-400">*</span>
                     </label>
                     <input
                         id="name"
@@ -93,14 +92,14 @@ export const ContactForm = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Alex Johnson"
-                        className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
                     />
                 </div>
 
                 {/* Email Input */}
                 <div>
-                    <label htmlFor="email" className="block text-xs font-mono text-zinc-400 mb-1.5">
-                        Your Email *
+                    <label htmlFor="email" className="block text-xs font-mono text-zinc-400 mb-1.5 font-medium">
+                        Your Email <span className="text-emerald-400">*</span>
                     </label>
                     <input
                         id="email"
@@ -108,16 +107,16 @@ export const ContactForm = () => {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="e.g. alex@example.com"
-                        className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                        placeholder="e.g. alex@company.com"
+                        className="w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
                     />
                 </div>
             </div>
 
             {/* Subject Input */}
             <div>
-                <label htmlFor="subject" className="block text-xs font-mono text-zinc-400 mb-1.5">
-                    Subject *
+                <label htmlFor="subject" className="block text-xs font-mono text-zinc-400 mb-1.5 font-medium">
+                    Subject <span className="text-emerald-400">*</span>
                 </label>
                 <input
                     id="subject"
@@ -125,15 +124,15 @@ export const ContactForm = () => {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="e.g. Frontend Developer Role / Project Collaboration"
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                    placeholder="e.g. Frontend Developer Role / Full-Stack Project Collaboration"
+                    className="w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white placeholder-zinc-500 text-sm transition-all shadow-inner"
                 />
             </div>
 
             {/* Message Textarea */}
             <div>
-                <label htmlFor="message" className="block text-xs font-mono text-zinc-400 mb-1.5">
-                    Message *
+                <label htmlFor="message" className="block text-xs font-mono text-zinc-400 mb-1.5 font-medium">
+                    Message <span className="text-emerald-400">*</span>
                 </label>
                 <textarea
                     id="message"
@@ -141,23 +140,31 @@ export const ContactForm = () => {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell me about the role, project, or opportunity..."
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
+                    placeholder="Tell me about your team, tech stack, or the project you'd like to collaborate on..."
+                    className="w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white placeholder-zinc-500 text-sm transition-all resize-none shadow-inner"
                 />
             </div>
 
             {/* Feedback Messages */}
             {status === 'success' && (
-                <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-2.5 text-emerald-400 text-sm">
-                    <CheckCircle2 className="w-5 h-5 shrink-0" />
-                    <span>Thank you! Your message has been sent successfully. I'll get back to you shortly.</span>
+                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3 text-emerald-400 text-sm animate-in fade-in duration-300">
+                    <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
+                    <div>
+                        <strong className="block font-semibold">Message delivered successfully!</strong>
+                        <span className="text-emerald-300/80 text-xs mt-0.5">
+                            Thank you for reaching out. Your transmission was received and routed to my inbox via Resend. I will respond promptly.
+                        </span>
+                    </div>
                 </div>
             )}
 
             {status === 'error' && (
-                <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center gap-2.5 text-red-400 text-sm">
-                    <AlertCircle className="w-5 h-5 shrink-0" />
-                    <span>{errorMessage}</span>
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 flex items-start gap-3 text-red-400 text-sm animate-in fade-in duration-300">
+                    <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                    <div>
+                        <strong className="block font-semibold">Submission failed</strong>
+                        <span className="text-red-300/80 text-xs mt-0.5">{errorMessage}</span>
+                    </div>
                 </div>
             )}
 
@@ -165,15 +172,16 @@ export const ContactForm = () => {
             <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 text-zinc-950 font-bold text-sm transition-all shadow-lg shadow-emerald-500/20 active:scale-95 cursor-pointer disabled:cursor-not-allowed"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-zinc-950 font-bold text-sm transition-all shadow-[0_0_25px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.45)] active:scale-95 cursor-pointer disabled:cursor-not-allowed"
             >
                 {status === 'loading' ? (
                     <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Sending Message...</span>
+                        <Loader2 className="w-4 h-4 animate-spin text-zinc-950" />
+                        <span>Sending message to server...</span>
                     </>
                 ) : (
                     <>
+                        <Sparkles className="w-4 h-4" />
                         <span>Send Message</span>
                         <Send className="w-4 h-4" />
                     </>

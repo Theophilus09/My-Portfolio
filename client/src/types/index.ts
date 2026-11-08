@@ -1,11 +1,13 @@
 // client/src/types/index.ts
 
+export type ProjectCategory = 'All' | 'Full-Stack' | 'Frontend' | 'Open Source' | 'React' | 'JavaScript';
+
 export interface Project {
     id: string;
     title: string;
     description: string;
     problemSolved?: string;
-    category: 'React' | 'JavaScript' | 'Full-Stack' | 'Frontend';
+    category: ProjectCategory;
     tags: string[];
     liveUrl?: string;
     githubUrl?: string;
@@ -37,4 +39,5 @@ export interface Education {
     course: string;
     period: string;
     honors?: string;
+    capstone?: string;
 }

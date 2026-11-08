@@ -9,7 +9,34 @@
   }
 
   body {
-    @apply bg-[#09090b] text-zinc-100 antialiased font-sans selection:bg-emerald-500 selection:text-black;
+    @apply bg-zinc-950 text-zinc-100 antialiased font-sans selection:bg-emerald-500/30 selection:text-emerald-200;
     min-height: 100vh;
   }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+}
+
+/* Background grid pattern inspired by Vercel & Linear */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
