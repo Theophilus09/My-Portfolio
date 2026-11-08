@@ -1,6 +1,6 @@
 # Theophilus Taiwo Ajibade | Portfolio & Engineering Showcase
 
-A responsive, high-performance portfolio application showcasing frontend engineering and full-stack solutions. Built with a modern React, Vite, and TypeScript Single Page Application (SPA) frontend and a decoupled Node.js/Express contact micro-service powered by the Resend email API.
+A responsive, high-performance portfolio application showcasing frontend engineering, responsive web architecture, and interactive UI systems. Built with a modern React, Vite, and TypeScript Single Page Application (SPA) frontend and a decoupled Node.js/Express contact micro-service powered by the Resend email API.
 
 ## Live Deployment
 - **Frontend URL:** [https://theophilus-ajibade.vercel.app](https://theophilus-ajibade.vercel.app)
@@ -12,7 +12,7 @@ A responsive, high-performance portfolio application showcasing frontend enginee
 - **Infrastructure:** Vercel (Frontend CI/CD), Render (Backend Web Service)
 
 ## Monorepo Architecture
-- `client/`: Modern frontend SPA featuring dark theme styling, project filtering, accessibility controls, and transactional contact form handling.
+- `client/`: Modern frontend SPA featuring an electric violet / neon cyan aesthetic, project filtering, accessibility controls, interactive micro-interactions, downloadable CV, and transactional contact form handling.
 - `server/`: Express microservice managing cross-origin validation and email routing to Resend.
 
 ## Local Setup & Development
@@ -30,4 +30,3 @@ cd server
 npm install
 npm run dev
 ```
-

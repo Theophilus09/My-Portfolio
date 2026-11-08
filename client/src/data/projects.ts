@@ -9,7 +9,7 @@ export const projectsData: Project[] = [
         problemSolved: 'Streamlines cross-device product discovery and eliminates cart latency using optimized React state management and Tailwind CSS design patterns.',
         category: 'React',
         tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'State Management'],
-        liveUrl: '',
+        liveUrl: 'https://shopping-frontend-ochre.vercel.app/',
         githubUrl: 'https://github.com/Theophilus09',
         featured: true,
     },
