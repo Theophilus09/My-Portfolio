@@ -25,9 +25,9 @@ export const links: LinksConfig = {
     socials: {
         github: 'https://github.com/Theophilus09',
         linkedin: 'https://www.linkedin.com/in/theophilus-ajibade',
-        twitter: 'https://x.com/your_handle',
-        whatsapp: 'https://wa.me/234XXXXXXXXXX',
-        telegram: 'https://t.me/your_handle',
+        twitter: 'https://x.com/TheoAjibade44',
+        whatsapp: 'https://wa.me/2348120271910',
+        telegram: 'https://t.me/+2348120271910',
         instagram: 'https://instagram.com/your_handle',
         email: 'mailto:ajibadetheophilus217@gmail.com',
     },
@@ -36,4 +36,3 @@ export const links: LinksConfig = {
 export const resumeUrl = links.resumeUrl;
 export const socials = links.socials;
 export const siteConfig = links;
-
